@@ -12,8 +12,8 @@
 buildscript {
   repositories {
     maven {
-      //url "http://repo.jfrog.org/artifactory/gradle"
-       url "http://repo-demo:8080/artifactory/gradle"
+      url "http://repo.jfrog.org/artifactory/gradle"
+       //url "http://repo-demo:8080/artifactory/gradle"
       credentials {
 username = "${artifactory_user}"
 password = "${artifactory_password}"
@@ -87,7 +87,7 @@ configurations {
 
 artifactory {
   //contextUrl = 'http://repo.jfrog.org/artifactory'
-  contextUrl = 'http://repo-demo:8080/artifactory'
+  contextUrl = 'http://repo-demo:8081/artifactory'
   publish {
     repository {
       repoKey = 'gradle-snapshot-local' //The Artifactory repository key to publish to
