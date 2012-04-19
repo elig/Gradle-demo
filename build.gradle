@@ -14,10 +14,10 @@ buildscript {
     maven {
       url "http://repo.jfrog.org/artifactory/gradle"
        //url "http://repo-demo:8080/artifactory/gradle"
-      credentials {
-username = "${artifactory_user}"
-password = "${artifactory_password}"
-}
+     // credentials {
+//username = "${artifactory_user}"
+//password = "${artifactory_password}"
+//}
     }
 
     dependencies {
