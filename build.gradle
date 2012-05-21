@@ -9,23 +9,6 @@
 *
 */
 
-buildscript {
-  repositories {
-    maven {
-      url "http://repo.jfrog.org/artifactory/gradle"
-       //url "http://repo-demo:8080/artifactory/gradle"
-     // credentials {
-//username = "${artifactory_user}"
-//password = "${artifactory_password}"
-//}
-    }
-
-    dependencies {
-      classpath(group: 'org.jfrog.buildinfo', name: 'build-info-extractor-gradle', version: '2.0.12')
-    }
-  }
-
-}
 
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -33,7 +16,7 @@ import java.text.SimpleDateFormat
 def globalVersion = new Version(currentVersion)
 
 allprojects {
-  apply plugin: 'artifactory'
+ 
   apply plugin: 'idea'
   configure(subprojects.findAll { new File(it.projectDir, 'src').directory }) {
     apply plugin: 'java'
@@ -85,38 +68,8 @@ configurations {
 }
 
 
-artifactory {
-  //contextUrl = 'http://repo.jfrog.org/artifactory'
-  contextUrl = 'http://repo-demo:8081/artifactory'
-  publish {
-    repository {
-      repoKey = 'gradle-snapshot-local' //The Artifactory repository key to publish to
-      //username = "${artifactory_user}" //The publisher user name
-     // password = "${artifactory_password}" //The publisher password
-      ivy {
-        //Optional section for configuring Ivy publication (when publishIvy = true). Assumes Maven repo layout if If not specified
-        ivyLayout = '[organization]/[module]/ivy-[revision].xml'
-        artifactLayout = '[organization]/[module]/[revision]/[module]-[revision](-[classifier]).[ext]'
-        mavenCompatible = false //Convert any dots in an [organization] layout value to path separators, similar to Maven's groupId-to-path conversion. True if not specified
-      }
-    }
-    defaults {
-      publishConfigs('archives', 'published')
-      properties = ['build.status': "$it.project.status".toString()]
-      publishPom = false //Publish generated POM files to Artifactory (true by default)
-      publishIvy = true //Publish generated Ivy descriptor files to Artifactory (true by default)
-    }
-  }
-  resolve {
-    repository {
-      repoKey = 'libs-release' //The Artifactory (preferably virtual) repository key to resolve from
-    //  username = "${artifactory_user}" //Optional resolver user name (leave out to use anonymous resolution)
-    //  password = "${artifactory_password}" //The resolver password
 
-    }
-  }
 
-}
 
 dependsOnChildren()
 
