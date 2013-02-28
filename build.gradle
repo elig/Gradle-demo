@@ -91,8 +91,8 @@ artifactory {
   publish {
     repository {
       repoKey = 'gradle-snapshot-local' //The Artifactory repository key to publish to
-      //username = "${artifactory_user}" //The publisher user name
-     // password = "${artifactory_password}" //The publisher password
+      username = "${artifactory_user}" //The publisher user name
+      password = "${artifactory_password}" //The publisher password
       ivy {
         //Optional section for configuring Ivy publication (when publishIvy = true). Assumes Maven repo layout if If not specified
         ivyLayout = '[organization]/[module]/ivy-[revision].xml'
@@ -110,8 +110,8 @@ artifactory {
   resolve {
     repository {
       repoKey = 'libs-release' //The Artifactory (preferably virtual) repository key to resolve from
-    //  username = "${artifactory_user}" //Optional resolver user name (leave out to use anonymous resolution)
-    //  password = "${artifactory_password}" //The resolver password
+      username = "${artifactory_user}" //Optional resolver user name (leave out to use anonymous resolution)
+      password = "${artifactory_password}" //The resolver password
 
     }
   }
