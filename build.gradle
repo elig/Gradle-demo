@@ -45,7 +45,7 @@ allprojects {
 }
 
 artifactoryPublish.skip = true
-
+ddd="${artifactory_user}"
 subprojects {
   apply plugin: 'maven'
 
@@ -93,8 +93,8 @@ artifactory {
       repoKey = 'gradle-snapshot-local' //The Artifactory repository key to publish to
     //  username = "${artifactory_user}" //The publisher user name
     //  password = "${artifactory_password}" //The publisher password
-      username='eee'
-      password='dddf'
+      username=$ddd
+      password=$ddd
       ivy {
         //Optional section for configuring Ivy publication (when publishIvy = true). Assumes Maven repo layout if If not specified
         ivyLayout = '[organization]/[module]/ivy-[revision].xml'
@@ -114,8 +114,8 @@ artifactory {
       repoKey = 'libs-release' //The Artifactory (preferably virtual) repository key to resolve from
       //username = "${artifactory_user}" //Optional resolver user name (leave out to use anonymous resolution)
       //password = "${artifactory_password}" //The resolver password
-username='ss'
-password='ff'
+username=$ddd
+password=$ddd
     }
   }
 
