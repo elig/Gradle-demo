@@ -45,7 +45,7 @@ allprojects {
 }
 
 artifactoryPublish.skip = true
-ddd="${artifactory_user}"
+ddd='fff'
 subprojects {
   apply plugin: 'maven'
 
